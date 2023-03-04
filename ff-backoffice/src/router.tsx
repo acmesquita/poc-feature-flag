@@ -4,18 +4,14 @@ import {
   CreateFeature,
   Home
 } from "./pages";
+import { getAllfeatures } from "./services/feature";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
     errorElement: <Page404 />,
-    loader: async () => {
-      const response = await fetch('http://localhost:3333/allFeatures')
-      const features = await response.json()
-
-      return features
-    }
+    loader: getAllfeatures
   },
   {
     path: "create-feature",
