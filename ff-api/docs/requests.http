@@ -2,14 +2,14 @@
 POST http://localhost:3333 HTTP/1.1
 Content-Type: application/json
 
-{ "flag": "new_page" }
+{ "flag": "new_page_4" }
 
 ### Add user to feature
 POST http://localhost:3333/addUser HTTP/1.1
 Content-Type: application/json
 
 {
-  "flag": "new_page",
+  "flag": "new_page_5",
   "userId": "1234"
 }
 

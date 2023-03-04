@@ -30,13 +30,13 @@ export class FeatureUserController {
         })
 
         if (result) {
-          return response.status(204)
+          return response.status(204).json(result)
         } else {
-          return response.status(404).json({ error: 'Flag were created' })
+          return response.status(400).json({ error: 'Flag were created' })
         }
-      } else {
-        return response.status(404).json({ error: 'Invalid Params' })
       }
+
+      return response.status(400).json({ error: 'Invalid Params' })
 
     } catch (error) {
       return response.status(500).json({ error: 'Internal Error' })
@@ -58,18 +58,16 @@ export class FeatureUserController {
       })
 
       if (result) {
-        return response.status(204)
+        return response.status(204).json(result)
       } else {
         return response.status(404).json({ error: 'User not found' })
       }
     } else {
       return response.status(400).json({ error: 'Invalid Params' })
     }
-
-
   }
 
-  async listAll(_, response: Response) {
+  async listAll(request: Request, response: Response) {
     const result = await this.listFeaturesWithUsers.perform()
 
     return response.json(result)
