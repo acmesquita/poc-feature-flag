@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Feature {
+  id    String        @id @default(uuid())
+  flag  String        @unique
+  users FeatureUser[]
+}
+
+model FeatureUser {
+  id        String  @id @default(uuid())
+  user      User    @relation(fields: [userId], references: [id])
+  feature   Feature @relation(fields: [featureId], references: [id])
+  userId    String
+  featureId String
+  value     Boolean @default(true)
+}
+
+model User {
+  id       String        @unique
+  features FeatureUser[]
+}

@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+  .header-container {
+    @apply h-[84px] w-full bg-zinc-900 shadow-lg shadow-zinc-800 flex items-center justify-between;
+  }
+
+  .header-menu_item {
+    @apply text-base p-3 text-slate-100;
+    @apply hover:rounded-lg hover:bg-zinc-600 hover:cursor-pointer;
+  }
+}
