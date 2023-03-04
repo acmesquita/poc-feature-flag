@@ -1,9 +1,8 @@
-import { Feature } from "../../../core/models";
+import { Feature, FeatureUsers } from "../../../core/models";
 import { AddUserToFeatureParams, FeatureUserRepository, FindParams } from "../../../core/repositories";
 import { prisma } from "../../database/prisma_client";
 
 export class FeatureUserPrismaRepository implements FeatureUserRepository{
-
 
   async find(params: FindParams): Promise<Feature> {
     const result = await prisma.featureUser.findFirst({
@@ -33,6 +32,21 @@ export class FeatureUserPrismaRepository implements FeatureUserRepository{
     }
 
     return null
+  }
+
+  async findAll(): Promise<FeatureUsers[]> {
+    const result = await prisma.feature.findMany({
+      include: {
+        users: true
+      }
+    })
+
+    const list = result.map(feature => ({
+      flag: feature.flag,
+      users: feature.users.map(user => user.userId)
+    }))
+
+    return list
   }
 
   async addUserToFeature(params: AddUserToFeatureParams): Promise<boolean> {

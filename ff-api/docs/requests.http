@@ -9,15 +9,18 @@ POST http://localhost:3333/addUser HTTP/1.1
 Content-Type: application/json
 
 {
-  "flag": "new_page_2",
-  "userId": "123"
+  "flag": "new_page",
+  "userId": "1234"
 }
 
 ### Consult feature flag with valid user
-GET http://localhost:3333/?flag=new_page_2&userId=123 HTTP/1.1
+GET http://localhost:3333/?flag=new_page&userId=123 HTTP/1.1
 
 ### Consult feature flag with invalid user
-GET http://localhost:3333/?flag=new_page_2&userId=12345 HTTP/1.1
+GET http://localhost:3333/?flag=new_page&userId=12345 HTTP/1.1
+
+### List all features with user
+GET http://localhost:3333/allFeatures HTTP/1.1
 
 ### Disable user to feature flag
 DELETE http://localhost:3333/disableUser HTTP/1.1

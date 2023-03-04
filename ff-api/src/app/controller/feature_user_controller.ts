@@ -1,13 +1,17 @@
 import { Request, Response } from "express"
 import { z } from "zod"
-import { AddUserAtFeature } from "../../core/usecases/feature_user/add_user_at_feature"
-import { DisableUserAtFeature } from "../../core/usecases/feature_user/disable_user_at_feature"
+import {
+  AddUserAtFeature,
+  DisableUserAtFeature,
+  ListFeaturesWithUsers
+} from "../../core/usecases"
 
 export class FeatureUserController {
 
   constructor(
     private readonly addUserAtFeature: AddUserAtFeature,
-    private readonly disableUserAtFeature: DisableUserAtFeature
+    private readonly disableUserAtFeature: DisableUserAtFeature,
+    private readonly listFeaturesWithUsers: ListFeaturesWithUsers
   ) { }
 
   async create(request: Request, response: Response) {
@@ -63,5 +67,11 @@ export class FeatureUserController {
     }
 
 
+  }
+
+  async listAll(_, response: Response) {
+    const result = await this.listFeaturesWithUsers.perform()
+
+    return response.json(result)
   }
 }

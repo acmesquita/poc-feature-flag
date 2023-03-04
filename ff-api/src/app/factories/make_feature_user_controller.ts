@@ -1,3 +1,4 @@
+import { ListFeaturesWithUsers } from "../../core/usecases"
 import { AddUserAtFeature } from "../../core/usecases/feature_user/add_user_at_feature"
 import { DisableUserAtFeature } from "../../core/usecases/feature_user/disable_user_at_feature"
 import { FeatureUserController } from "../controller/feature_user_controller"
@@ -17,9 +18,14 @@ export const makeFeatureUserController = () => {
     featureUserRepo
   )
 
+  const listFeaturesWithUsers = new ListFeaturesWithUsers(
+    featureUserRepo
+  )
+
   const controller = new FeatureUserController(
     addUserAtFeature,
-    disableUserAtFeature
+    disableUserAtFeature,
+    listFeaturesWithUsers
   )
 
   return controller

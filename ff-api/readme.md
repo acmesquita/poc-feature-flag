@@ -10,6 +10,7 @@ System to manager feature flags by users.
 - Add user to a feature
 - Disable user to a feature
 - Consult feature for user
+- List all features with your users
 
 ### Getting Starting
 
