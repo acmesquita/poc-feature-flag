@@ -1,20 +1,21 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, redirect } from "react-router-dom";
 import { Page404 } from "./components/404";
+import * as FeatureController from "./controller/features_controller";
 import {
   CreateFeature,
   Home
 } from "./pages";
-import { getAllfeatures } from "./services/feature";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
     errorElement: <Page404 />,
-    loader: getAllfeatures
+    loader: FeatureController.index
   },
   {
     path: "create-feature",
     element: <CreateFeature />,
+    action: FeatureController.create
   },
 ]);

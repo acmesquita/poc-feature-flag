@@ -9,7 +9,7 @@ export function Home() {
     <Page>
       <ul>
         {features.map(feature => (
-          <li>{feature.flag} - {feature.users.join(',')}</li>
+          <li key={feature.flag}>{feature.flag} - {feature.users.join(',')}</li>
         ))}
 
       </ul>
