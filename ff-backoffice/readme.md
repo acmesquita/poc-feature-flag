@@ -11,7 +11,9 @@ System to manager feature flags by users, enable:
 This project to using:
 
 - Typescript
-- Next 13
+- Vite
+- React Router Dom v6.8
+- Tailwind CSS
 
 #### Install dependencies
 
