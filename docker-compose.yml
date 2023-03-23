@@ -1,0 +1,60 @@
+version: '3.2'
+
+services:
+  api:
+    build: './ff-api'
+    command: yarn dev
+    ports:
+      - '3333:3333'
+    volumes:
+      - ./ff-api:/app
+    depends_on:
+      - db
+  db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+  backoffice:
+    build: './ff-backoffice'
+    command: yarn dev
+    ports:
+      - "3003:3003"
+    volumes:
+      - ./ff-backoffice:/app
+    depends_on:
+      - api
+  bff:
+    build: './ff-bff'
+    command: yarn dev
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./ff-bff:/app
+    depends_on:
+      - api
+      - redis
+  redis:
+    image: redis
+    command: "redis-server --requirepass Redis@1113"
+    ports:
+      - "6379:6379"
+  client:
+    build: './ff-client'
+    command: yarn dev -p 3001
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./ff-client:/app
+    depends_on:
+      - api
+      - bff
+volumes:
+  db:
+    driver: local
+  app:

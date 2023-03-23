@@ -18,3 +18,24 @@ _[Link to article](https://martinfowler.com/articles/feature-toggles.html)_
 </p>
 
 This project is a example, using many tools, to manager and using Feature Flag how to solution.
+
+### Up all projects
+
+```
+docker compose build
+```
+
+Create database and run migrates
+
+```
+docker compose run --rm api npx prisma migrate dev
+```
+
+```
+docker compose up
+```
+
+### Access applications
+
+- Access to backoffice: `http://localhost:3003`
+- Access to client: `http://localhost:3001`

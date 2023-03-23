@@ -13,6 +13,7 @@ export default function HomeV2() {
 
   return (
     <main className="flex items-center justify-center h-[90%] flex-col gap-5">
+      <span>V2</span>
       <form className="flex items-center justify-center flex-col gap-5" onSubmit={handleForm}>
         <input
           type="text"
