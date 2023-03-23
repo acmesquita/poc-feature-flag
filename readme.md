@@ -19,7 +19,9 @@ _[Link to article](https://martinfowler.com/articles/feature-toggles.html)_
 
 This project is a example, using many tools, to manager and using Feature Flag how to solution.
 
-### Up all projects
+So, when
+
+### Getting Starting
 
 ```
 docker compose build
@@ -30,6 +32,8 @@ Create database and run migrates
 ```
 docker compose run --rm api npx prisma migrate dev
 ```
+
+Run applications
 
 ```
 docker compose up

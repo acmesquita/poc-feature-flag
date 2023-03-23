@@ -1,8 +1,13 @@
 export const fetchToggle = async (flag: string, userId: string) => {
-  const response = await fetch(`http://localhost:3000/?flag=${flag}&userId=${userId}`)
-  const data = await response.json()
+  try {
+    const response = await fetch(`http://bff:3000/?flag=${flag}&userId=${userId}`)
+    const data = await response.json()
 
-  console.log(data)
-
-  return data
+    return data
+  } catch (error) {
+    console.log(error)
+    return {
+      value: false
+    }
+  }
 }
