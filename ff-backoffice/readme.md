@@ -13,6 +13,7 @@ This project to using:
 - Typescript
 - Vite
 - React Router Dom v6.8
+- Tailwind CSS
 
 #### Install dependencies
 
