@@ -10,22 +10,19 @@
 
 _[Link to article](https://martinfowler.com/articles/feature-toggles.html)_
 
-## This project
+## Solution
 
+Imagine a scenario where it is necessary to create a new functionality and to maintain the delivery flow, it will be necessary to gradually release it to customers. For this, we can use the Feature Flag solution, which aims to inform whether the user can view it.
+
+Thinking of a robust solution, I understood that some microsystems would be necessary to isolate both the business rules and the technologies used to access these rules.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/15862643/223223377-be4f02c1-7d22-46c3-9248-c9325b89e520.png" />
 </p>
 
-Imagine a scenario where it is necessary to create a new screen for customers, a screen that the team is not so sure of delivery, because it is not complete or because it needs to be released little by little to customers.
-
-In this scenario, we can understand a solution that knows how to inform whether that client for that functionality can be visualized or not. So, a Feature Flag solution was built.
-
-Thinking about the solution, I understood that some micro systems would be necessary to isolate both the business rules and the technologies used to access these rules.
-
 The first micro system was the construction of the API that would contain all the business requirements, in addition to access to data storage and manipulation. For this system, I tried to isolate what is core with the use cases of the other technologies that used the use cases. This was important to make it easier, if in the future, to exchange technologies.
 
-To understand more details of the implementation, the readme of the `ff-api` project will be very instructive.
+> To understand more details of the implementation, the readme of the `ff-api` project will be very instructive.
 
 With the api ready, now we need to understand how our team will manage the flags and the users who will be able to visualize or not certain functionality, for this the `ff-backoffice` project was built.
 
