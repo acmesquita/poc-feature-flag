@@ -6,8 +6,6 @@ import { fetchToggle } from "@/utils/toggle";
 export default async function Home() {
   const toggle = await fetchToggle('new_page', '123')
 
-  console.log(toggle)
-
   if (toggle.value) {
     return <HomeV2 />
   }
